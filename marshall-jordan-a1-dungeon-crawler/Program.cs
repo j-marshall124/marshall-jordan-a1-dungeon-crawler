@@ -349,6 +349,11 @@ Console.WriteLine("What do you do?");
 if (swordShield == true) // If player purchased sword and shield
 {
     Console.WriteLine(">FIGHT     >DODGE     >USE IRON SWORD"); // Hidden option
+    string roomTwoChoice = Console.ReadLine()!;
+    if (roomTwoChoice.ToUpper() == "FIGHT") // Player chooses to fight
+    {
+        Console.WriteLine("You choose to fight! You grab your 'Short Sword' ");
+    }
 }
 else if (swordShield == true && injuredLeg == true) // If player purchased sword and shield AND has an injured leg
 {
