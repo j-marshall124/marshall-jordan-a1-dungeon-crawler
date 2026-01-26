@@ -340,4 +340,25 @@ else // Didn't purchase sword and shield
 // Second room in dungeon
 Console.WriteLine("\nPress Enter to continue.");
 Console.ReadLine();
-Console.WriteLine("");
+Console.WriteLine("As you enter the next room, a chill crawls down your spine.\nBefore your eyes a pile of bones springs to life, ready to fight.");
+Console.WriteLine("\nPress Enter to continue.");
+Console.ReadLine();
+Console.WriteLine("The skeleton rushes towards you with sword in hand.");
+Console.WriteLine("What do you do?");
+
+if (swordShield == true) // If player purchased sword and shield
+{
+    Console.WriteLine(">FIGHT     >DODGE     >USE IRON SWORD"); // Hidden option
+}
+else if (swordShield == true && injuredLeg == true) // If player purchased sword and shield AND has an injured leg
+{
+    Console.WriteLine(">FIGHT     >USE IRON SWORD"); // Can't dodge
+}
+else if (injuredLeg == true) // If player has an injured leg
+{
+    Console.WriteLine(">FIGHT"); // Can't dodge
+}
+else // If player didn't purchase sword and shield
+{
+    Console.WriteLine(">FIGHT     >DODGE");
+}
