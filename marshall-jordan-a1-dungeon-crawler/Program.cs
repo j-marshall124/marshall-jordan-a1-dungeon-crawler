@@ -25,28 +25,28 @@ string doTalk = Console.ReadLine()!; // Get answer
 
 if (doTalk.ToUpper() == "YES") // Talk to the merchant
 {
-    Console.WriteLine("\nHello there adventurer! What might your name be?");
+    Console.WriteLine("\n\"Hello there adventurer! What might your name be?\"");
     string playerName = Console.ReadLine()!;
-    Console.WriteLine($"\nNice to meet you {playerName}, how much gold might you have in your bag?");
+    Console.WriteLine($"\n\"Nice to meet you {playerName}, how much gold might you have in your bag?\"");
     string heldGoldText = Console.ReadLine()!;
     long heldGold = long.Parse(heldGoldText); // Turn gold text input into long integer
 
     if (heldGold < 50) // If the player has less than 50 gold
     {
-        Console.WriteLine($"\nHmm... only {heldGold} gold... \nI stumbled across this bag, why don't you have it" +
-            $" and keep whatever is inside?");
+        Console.WriteLine($"\n\"Hmm... only {heldGold} gold... \nI stumbled across this bag, why don't you have it" +
+            $" and keep whatever is inside?\"");
         heldGold += 50; // Adds 50 gold to existing gold
         Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         Console.WriteLine("You found 50 gold in the bag.");
         Console.WriteLine($"You now have {heldGold} gold.");
-        Console.WriteLine("\nTake a look at my wares I have for sale.");
+        Console.WriteLine("\n\"Take a look at my wares I have for sale.\"");
         Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
     }
     else // If the player has 50 or more gold
     {
-        Console.WriteLine("\nTake a look at my wares I have for sale.");
+        Console.WriteLine("\n\"Take a look at my wares I have for sale.\"");
         Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
     }
@@ -57,7 +57,7 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
         " that looks a bit tattered but would still be better than nothing. There is also\na 'Strange Key' that catches your eye.");
     Console.WriteLine("Press Enter to continue.");
     Console.ReadLine();
-    Console.WriteLine("*Type the name or cost of the item you want to purchase*");
+    Console.WriteLine("*Type the NAME or COST of the item you want to purchase. Type only one item.*");
     Console.WriteLine($"*Merchant Shop*          Bag: {heldGold}G");
     Console.WriteLine(">Health Potion: 15G\n>Iron Sword and Wooden Shield: 50G\n\nType LEAVE to continue with no more purchases");
     string playerPurchase = Console.ReadLine()!;
@@ -70,7 +70,7 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
         Console.WriteLine($"\nYou purchased the 'Health Potion'. You have {heldGold} gold left.");
         Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
-        Console.WriteLine("*Type the name or cost of the item you want to purchase*");
+        Console.WriteLine("*Type the NAME or COST of the item you want to purchase. Type only one item.*");
         Console.WriteLine($"*Merchant Shop*          Bag: {heldGold}G"); // Merchant shop loop
         Console.WriteLine(">Iron Sword and Wooden Shield: 50G\n\nType LEAVE to continue with no more purchases");
         string secondPurchase = Console.ReadLine()!;
@@ -88,8 +88,8 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
             
             if (askAboutKey.ToUpper() == "YES") // Ask about the strange key
             {
-                Console.WriteLine("\nA strange looking key isn't it? I found it near 'The Tomb of the Fallen Knight'.");
-                Console.WriteLine("It's all yours for 124G.");
+                Console.WriteLine("\n\"A strange looking key isn't it? I found it near 'The Tomb of the Fallen Knight'.");
+                Console.WriteLine("It's all yours for 124G.\"");
                 Console.WriteLine("Do you buy the 'Strange Key'?");
                 Console.WriteLine(">YES     >NO");
                 string buyKey = Console.ReadLine()!;
@@ -100,29 +100,29 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
                     {
                         heldGold -= 124; // Subtract 124 gold from inventory
                         strangeKey = true; // Key is in inventory
-                        Console.WriteLine("\nHere you go. Hopefully you can find a use for it.");
-                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.");
+                        Console.WriteLine("\n\"Here you go. Hopefully you can find a use for it.");
+                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
                     }
                     else // If player doesn't have 124 gold
                     {
-                        Console.WriteLine("\nYou don't have enough gold for that.");
-                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.");
+                        Console.WriteLine("\n\"You don't have enough gold for that.");
+                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
                     }
                 }
                 else // Player doesn't want to buy the strange key
                 {
-                    Console.WriteLine("\nI guess I'll hold onto it for now.");
-                    Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.");
+                    Console.WriteLine("\n\"I guess I'll hold onto it for now.");
+                    Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
                 }
             }
             else // Player doesn't want to ask about the strange key
             {
-                Console.WriteLine("Not curious about the key?\nI guess I'll hold onto it for now.");
+                Console.WriteLine("\"Not curious about the key?\nI guess I'll hold onto it for now.\"");
             }
         }
         else // Player doesn't purchase anything else
         {
-            Console.WriteLine($"\nGood luck on your journey {playerName}.");
+            Console.WriteLine($"\n\"Good luck on your journey {playerName}.\"");
         }
     }
 
@@ -134,7 +134,7 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
         Console.WriteLine($"\nYou purchased the 'Iron Sword and Wooden Shield'. You have {heldGold} gold left.");
         Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
-        Console.WriteLine("*Type the name or cost of the item you want to purchase*");
+        Console.WriteLine("Type the NAME or COST of the item you want to purchase. Type only one item.");
         Console.WriteLine($"*Merchant Shop*          Bag: {heldGold}G");
         Console.WriteLine(">Health Potion: 15G\n\nType LEAVE to continue with no more purchases");
         string secondPurchase = Console.ReadLine()!;
@@ -152,8 +152,8 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
 
             if (askAboutKey.ToUpper() == "YES") // Ask about the strange key
             {
-                Console.WriteLine("\nA strange looking key isn't it? I found it near 'The Tomb of the Fallen Knight'.");
-                Console.WriteLine("It's all yours for 124G.");
+                Console.WriteLine("\n\"A strange looking key isn't it? I found it near 'The Tomb of the Fallen Knight'.");
+                Console.WriteLine("It's all yours for 124G.\"");
                 Console.WriteLine("Do you buy the 'Strange Key'?");
                 Console.WriteLine(">YES     >NO");
                 string buyKey = Console.ReadLine()!;
@@ -164,34 +164,34 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
                     {
                         heldGold -= 124; // Subtract 124 gold from inventory
                         strangeKey = true; // Key is in inventory
-                        Console.WriteLine("\nHere you go. Hopefully you can find a use for it.");
-                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.");
+                        Console.WriteLine("\n\"Here you go. Hopefully you can find a use for it.");
+                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
                     }
                     else // If player doesn't have 124 gold
                     {
-                        Console.WriteLine("\nYou don't have enough gold for that.");
-                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.");
+                        Console.WriteLine("\n\"You don't have enough gold for that.");
+                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
                     }
                 }
                 else // Player doesn't want to buy the strange key
                 {
-                    Console.WriteLine("\nI guess I'll hold onto it for now.");
-                    Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.");
+                    Console.WriteLine("\n\"I guess I'll hold onto it for now.");
+                    Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
                 }
             }
             else // Player doesn't want to ask about the strange key
             {
-                Console.WriteLine("Not curious about the key?\nI guess I'll hold onto it for now.");
+                Console.WriteLine("\"Not curious about the key?\nI guess I'll hold onto it for now.\"");
             }
         }
         else // Player doesn't purchase anything else
         {
-            Console.WriteLine($"\nGood luck on your journey {playerName}.");
+            Console.WriteLine($"\n\"Good luck on your journey {playerName}.\"");
         }
     }
     else // Player doesn't buy anything
     {
-        Console.WriteLine($"\nGood luck on your journey {playerName}.");
+        Console.WriteLine($"\n\"Good luck on your journey {playerName}.\"");
     }
 }
 else // Player doesn't talk to the merchant
@@ -644,3 +644,21 @@ else // Player didn't purchase the key
 
 // Final room
 Console.WriteLine("You walk into the final room of the dungeon.");
+Console.WriteLine("A suit of armour sits in a chair at the far side of the room. The air thickens as you walk further into the room.\nSuddenly, the suit of armour " +
+    "begins to move and fill with life. You can see two glowing orbs behind the helmet.");
+Console.WriteLine("Press Enter to continue.");
+Console.ReadLine();
+Console.WriteLine("The suit of armour takes a step towards you and begins to speak.");
+Console.WriteLine("\"They call me the Fallen Knight. Anyone who enters my tower shall not leave alive.\nPrepare to meet your end traveller.\"");
+Console.WriteLine("Press Enter to continue.");
+Console.ReadLine();
+if (moonlightSword == true) // If player has the sword from the secret room
+{
+    Console.WriteLine("The Fallen Knight notices the 'Mysterious Sword' on your back and draws his sword.\nSounding surprised, the knight speaks again.");
+    Console.WriteLine("\"The 'Moonlight Sword'? How is this possible?\"");
+    Console.WriteLine("The Fallen Knight tightens his grip on his sword and lunges towards you!");
+}
+else
+{
+    Console.WriteLine("The Fallen Knight draws his sword and lunges towards you!");
+}
