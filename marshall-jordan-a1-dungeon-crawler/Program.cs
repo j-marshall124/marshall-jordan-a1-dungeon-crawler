@@ -658,7 +658,38 @@ if (moonlightSword == true) // If player has the sword from the secret room
     Console.WriteLine("\"The 'Moonlight Sword'? How is this possible?\"");
     Console.WriteLine("The Fallen Knight tightens his grip on his sword and lunges towards you!");
 }
-else
+else // Player doesn't have the sword from the secret room
 {
     Console.WriteLine("The Fallen Knight draws his sword and lunges towards you!");
+}
+Console.WriteLine("\nYou try and think fast! What do you do?");
+
+if (moonlightSword == true) // Player isn't injured and has Moonlight Sword
+{
+    Console.WriteLine(">FIGHT     >DODGE     >USE MOONLIGHT SWORD");
+    string bossFightOption1 = Console.ReadLine()!;
+}
+else if (swordShield == true) // Player isn't injured and has Wooden Shield
+{
+    Console.WriteLine(">FIGHT     >DODGE     >USE SHIELD");
+    string bossFightOption1 = Console.ReadLine()!;
+}
+else if (injuredLeg == true && moonlightSword == true) // Player is injured and Moonlight Sword
+{
+    Console.WriteLine(">FIGHT     >USE MOONLIGHT SWORD");
+    string bossFightOption1 = Console.ReadLine()!;
+}
+else if (injuredLeg == true && swordShield == true) // Player is injured and has Wooden Shield
+{
+    Console.WriteLine(">FIGHT     >USE SHIELD");
+    string bossFightOption1 = Console.ReadLine()!;
+}
+else if (injuredLeg == true) // Player is injured and doesn't have any items
+{
+    Console.WriteLine(">FIGHT");
+    string bossFightOption1 = Console.ReadLine()!;
+}
+else // Player inputs something unknown
+{
+    Console.WriteLine("");
 }
