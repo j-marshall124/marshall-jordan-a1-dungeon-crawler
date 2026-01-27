@@ -14,7 +14,7 @@ bool moonlightSword = false;
 Console.WriteLine("You're a novice adventurer who overheard a group of people talking about adventurers\nwho" +
     " had gone missing in a mysterious dungeon that the locals call 'The Tomb of the Fallen Knight'. \nThis" +
     " information intrigues you, so you grab your 'Short Sword' and bag and head towards the dungeon.");
-Console.WriteLine("\nPress Enter to continue.");
+Console.WriteLine("Press Enter to continue.");
 Console.ReadLine();
 
 // Merchant interaction
@@ -36,22 +36,26 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
         Console.WriteLine($"\nHmm... only {heldGold} gold... \nI stumbled across this bag, why don't you have it" +
             $" and keep whatever is inside?");
         heldGold += 50; // Adds 50 gold to existing gold
-        Console.WriteLine("\n...");
+        Console.WriteLine("Press Enter to continue.");
+        Console.ReadLine();
         Console.WriteLine("You found 50 gold in the bag.");
         Console.WriteLine($"You now have {heldGold} gold.");
-        Console.WriteLine("...\n");
-        Console.WriteLine("Take a look at my wares I have for sale.");
+        Console.WriteLine("\nTake a look at my wares I have for sale.");
+        Console.WriteLine("Press Enter to continue.");
+        Console.ReadLine();
     }
     else // If the player has 50 or more gold
     {
         Console.WriteLine("\nTake a look at my wares I have for sale.");
+        Console.WriteLine("Press Enter to continue.");
+        Console.ReadLine();
     }
 
-    Console.WriteLine("\nThe merchant shows you what they have for sale.");
+    Console.WriteLine("The merchant shows you what they have for sale.");
     Console.WriteLine("You see a 'Health Potion' that may come in handy if you run into danger inside the dungeon, an\n" +
         "'Iron Sword' that looks a little worn but still looks sharper than the one you have now, and\na 'Wooden Shield'" +
         " that looks a bit tattered but would still be better than nothing. There is also\na 'Strange Key' that catches your eye.");
-    Console.WriteLine("\nPress Enter to continue.");
+    Console.WriteLine("Press Enter to continue.");
     Console.ReadLine();
     Console.WriteLine("*Type the name or cost of the item you want to purchase*");
     Console.WriteLine($"*Merchant Shop*          Bag: {heldGold}G");
@@ -63,8 +67,8 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
     {
         heldGold -= 15; // Subtract 15 gold
         healthPotion = true; // Health potion is in inventory
-        Console.WriteLine($"\nYou purchased the 'Health Potion'. You have {heldGold} gold left.\n");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine($"\nYou purchased the 'Health Potion'. You have {heldGold} gold left.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         Console.WriteLine("*Type the name or cost of the item you want to purchase*");
         Console.WriteLine($"*Merchant Shop*          Bag: {heldGold}G"); // Merchant shop loop
@@ -75,7 +79,7 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
         {
             heldGold -= 50; // Subtract 50 gold
             swordShield = true; // Sword and shield is in inventory
-            Console.WriteLine($"\nYou purchased the 'Iron Sword and Wooden Shield'. You have {heldGold} gold left.\n");
+            Console.WriteLine($"\nYou purchased the 'Iron Sword and Wooden Shield'. You have {heldGold} gold left.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             Console.WriteLine("The merchant has nothing left for sale, do you ask about the 'Strange Key'?");
@@ -127,8 +131,8 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
     {
         heldGold -= 50; // Subtract 50 gold from inventory
         swordShield = true; // Sword and shield is in inventory
-        Console.WriteLine($"\nYou purchased the 'Iron Sword and Wooden Shield'. You have {heldGold} gold left.\n");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine($"\nYou purchased the 'Iron Sword and Wooden Shield'. You have {heldGold} gold left.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         Console.WriteLine("*Type the name or cost of the item you want to purchase*");
         Console.WriteLine($"*Merchant Shop*          Bag: {heldGold}G");
@@ -139,7 +143,7 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
         {
             heldGold -= 15; // Subtract 15 gold
             healthPotion = true; // Health potion is in inventory
-            Console.WriteLine($"\nYou purchased the 'Health Potion'. You have {heldGold} gold left.\n");
+            Console.WriteLine($"\nYou purchased the 'Health Potion'. You have {heldGold} gold left.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             Console.WriteLine("The merchant has nothing left for sale, do you ask about the 'Strange Key'?");
@@ -213,7 +217,7 @@ if (swordShield == true) // If player purchased sword and shield
     if (roomOneChoice.ToUpper() == "MOVE") // Player chooses MOVE
     {
         Console.WriteLine("\nYou dive out of the way of the arrow at the last second.\nThe arrow grazed your leg but you can still walk, luckily you weren't injured more.");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         if (healthPotion == true) // If player purchased health potion
         {
@@ -232,13 +236,13 @@ if (swordShield == true) // If player purchased sword and shield
     else if (roomOneChoice.ToUpper() == "STAY") // Player chooses STAY
     {
         Console.WriteLine("\nYou don't move, hoping that the arrow will miss it's target.");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         Console.WriteLine("The arrow pierces your leg and you scream in agony.");
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("Good thing you bought a 'Health Potion' from the Merchant. You drink some to heal your wound.");
-            Console.WriteLine("You have half of the 'Health Potion' left.\nYour leg is still in pain from the arrow.\n");
+            Console.WriteLine("You have half of the 'Health Potion' left.\nYour leg is still in pain from the arrow.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             hurtLeg = true; // Leg is hurt, healed from being pierced by the arrow
@@ -263,7 +267,7 @@ if (swordShield == true) // If player purchased sword and shield
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("Good thing you bought a 'Health Potion' from the Merchant. You drink some to heal your wound.");
-            Console.WriteLine("You have half of the 'Health Potion' left.\nYour leg is still in pain from the arrow.\n");
+            Console.WriteLine("You have half of the 'Health Potion' left.\nYour leg is still in pain from the arrow.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             hurtLeg = true; // Leg is hurt, healed from being pierced by the arrow
@@ -289,7 +293,7 @@ else // Didn't purchase sword and shield
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("Good thing you bought a 'Health Potion' from the Merchant. You drink some to heal your wound.");
-            Console.WriteLine("You have half of the 'Health Potion' left.\n");
+            Console.WriteLine("You have half of the 'Health Potion' left.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             Console.WriteLine("You make your way across the room and venture deeper into the dungeon.");
@@ -309,7 +313,7 @@ else // Didn't purchase sword and shield
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("Good thing you bought a 'Health Potion' from the Merchant. You drink some to heal your wound.");
-            Console.WriteLine("You have half of the 'Health Potion' left.\nYour leg is still in pain from the arrow.\n");
+            Console.WriteLine("You have half of the 'Health Potion' left.\nYour leg is still in pain from the arrow.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             hurtLeg = true; // Leg is hurt, healed from being pierced by the arrow
@@ -328,7 +332,7 @@ else // Didn't purchase sword and shield
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("Good thing you bought a 'Health Potion' from the Merchant. You drink some to heal your wound.");
-            Console.WriteLine("You have half of the 'Health Potion' left.\nYour leg is still in pain from the arrow.\n");
+            Console.WriteLine("You have half of the 'Health Potion' left.\nYour leg is still in pain from the arrow.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             hurtLeg = true; // Leg is hurt, healed from being pierced by the arrow
@@ -343,11 +347,9 @@ else // Didn't purchase sword and shield
 }
 
 // Second room in dungeon
-Console.WriteLine("\nPress Enter to continue.");
+Console.WriteLine("Press Enter to continue.");
 Console.ReadLine();
 Console.WriteLine("As you enter the next room, a chill crawls down your spine.\nBefore your eyes a pile of bones springs to life, ready to fight.");
-Console.WriteLine("\nPress Enter to continue.");
-Console.ReadLine();
 Console.WriteLine("The skeleton rushes towards you with sword in hand.");
 Console.WriteLine("What do you do?");
 
@@ -359,7 +361,7 @@ if (swordShield == true) // If player purchased sword and shield
     if (roomTwoChoice.ToUpper() == "FIGHT") // Player chooses to fight
     {
         Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your arm as you deal a fatal blow.");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         if (healthPotion == true) // If player purchased health potion
         {
@@ -376,13 +378,13 @@ if (swordShield == true) // If player purchased sword and shield
     {
         Console.WriteLine("\nYou choose to dodge! You roll out of the way as the skeleton rushes towards you.\nYou pull out your 'Short Sword' and slash the " +
             "skeleton in the back, dealing a fatal blow.");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
     }
     else if (roomTwoChoice.ToUpper() == "USE IRON SWORD") // Player chooses to use the sword
     {
         Console.WriteLine("\nYou pull out your 'Iron Sword' and deflect the skeleton's attack!\nThe skeleton stumbles back. You slash the skeleton, dealing a fatal blow.");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
     }
     else // Player inputs something unknown
@@ -393,7 +395,7 @@ if (swordShield == true) // If player purchased sword and shield
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
-            Console.WriteLine("\nPress Enter to continue.");
+            Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
         else
@@ -409,12 +411,12 @@ else if (swordShield == true && injuredLeg == true) // If player purchased sword
     if (roomTwoChoice.ToUpper() == "FIGHT") // Player chooses to fight
     {
         Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your arm as you deal a fatal blow.");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
-            Console.WriteLine("\nPress Enter to continue.");
+            Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
         else
@@ -425,17 +427,17 @@ else if (swordShield == true && injuredLeg == true) // If player purchased sword
     else if (roomTwoChoice.ToUpper() == "USE IRON SWORD") // Player chooses to use the sword
     {
         Console.WriteLine("\nYou pull out your 'Iron Sword' and deflect the skeleton's attack!\nThe skeleton stumbles back. You slash the skeleton, dealing a fatal blow.");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
     }
     else // Player inputs something unknown
     {
         Console.WriteLine("\nYou froze up and got struck by the skeleton!");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
-            Console.WriteLine("\nPress Enter to continue.");
+            Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
         else
@@ -451,12 +453,12 @@ else if (injuredLeg == true) // If player has an injured leg
     if (roomTwoChoice.ToUpper() == "FIGHT") // Player chooses to fight
     {
         Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your arm as you deal a fatal blow.");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
-            Console.WriteLine("\nPress Enter to continue.");
+            Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
         else
@@ -472,12 +474,12 @@ else // If player didn't purchase sword and shield
     if (roomTwoChoice.ToUpper() == "FIGHT") // Player chooses to fight
     {
         Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your arm as you deal a fatal blow.");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
-            Console.WriteLine("\nPress Enter to continue.");
+            Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
         else
@@ -489,18 +491,18 @@ else // If player didn't purchase sword and shield
     {
         Console.WriteLine("\nYou choose to dodge! You roll out of the way as the skeleton rushes towards you.\nYou pull out your 'Short Sword' and slash the " +
             "skeleton in the back, dealing a fatal blow.");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
     }
     else // Player inputs something unknown
     {
         Console.WriteLine("\nYou froze up and got struck by the skeleton!");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
-            Console.WriteLine("\nPress Enter to continue.");
+            Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
         else
@@ -512,13 +514,13 @@ else // If player didn't purchase sword and shield
 
 // After skeleton battle
 Console.WriteLine("After your fight with the skeleton you notice a key hole on the wall.");
-Console.WriteLine("\nPress Enter to continue.");
+Console.WriteLine("Press Enter to continue.");
 Console.ReadLine();
 if (strangeKey == true) // Player purchased the key
 {
     Console.WriteLine("You use the 'Strange Key' in the key hole. The wall slides open, revealing a secret room.\nA single beam of light from above reflects " +
         "off of a sword in the middle of the room.\nYou walk over and pick up the sword.");
-    Console.WriteLine("\nPress Enter to continue.");
+    Console.WriteLine("Press Enter to continue.");
     Console.ReadLine();
     Console.WriteLine("You obtained 'Mysterious Sword'");
 }
@@ -528,3 +530,4 @@ else // Player didn't purchase the key
 }
 
 // Final room
+Console.WriteLine("You walk into the final room of the dungeon.");
