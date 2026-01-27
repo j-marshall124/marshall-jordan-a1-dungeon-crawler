@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.Intrinsics.X86;
 
-// Used to check inventory
+// Used to check inventory and injuries
 bool healthPotion = false;
 bool swordShield = false;
 bool strangeKey = false;
@@ -29,7 +29,7 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
     string playerName = Console.ReadLine()!;
     Console.WriteLine($"\nNice to meet you {playerName}, how much gold might you have in your bag?");
     string heldGoldText = Console.ReadLine()!;
-    int heldGold = int.Parse(heldGoldText); // Turn gold text input into integer
+    long heldGold = long.Parse(heldGoldText); // Turn gold text input into long integer
 
     if (heldGold < 50) // If the player has less than 50 gold
     {
@@ -222,7 +222,7 @@ if (swordShield == true) // If player purchased sword and shield
         if (healthPotion == true) // If player purchased health potion
         {
             Console.WriteLine("Good thing you bought a 'Health Potion' from the Merchant. You drink some to heal your wound.");
-            Console.WriteLine("You have half of the 'Health Potion' left.\n");
+            Console.WriteLine("You have half of the 'Health Potion' left.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
             Console.WriteLine("You make your way across the room and venture deeper into the dungeon.");
@@ -360,18 +360,46 @@ if (swordShield == true) // If player purchased sword and shield
     string roomTwoChoice = Console.ReadLine()!;
     if (roomTwoChoice.ToUpper() == "FIGHT") // Player chooses to fight
     {
-        Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your arm as you deal a fatal blow.");
+        Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your leg as you deal a fatal blow.");
         Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
+        if (hurtLeg == true) // Checks if player is already hurt
+        {
+            hurtLeg = false;
+            injuredLeg = true; // If player is hurt, become injured
+        }
+        else // If player is not hurt
+        {
+            hurtLeg = true; // Player becomes hurt
+        }
         if (healthPotion == true) // If player purchased health potion
         {
-            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
-            Console.WriteLine("Press Enter to continue.");
-            Console.ReadLine();
+            if (hurtLeg == true) // If player is hurt, goes from hurt to healed
+            {
+                hurtLeg = false;
+                Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound. Your leg feels better.");
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+            }
+            else // If player is injured, goes from injured to hurt
+            {
+                injuredLeg = false;
+                hurtLeg = true;
+                Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.\nYour leg is still hurt but it won't slow you down.");
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+            }
         }
-        else
+        else // Player doesn't have a health potion
         {
-            Console.WriteLine("Your is sore but luckily the skeleton didn't pierce your skin.");
+            if (hurtLeg == true) // If player is hurt
+            {
+                Console.WriteLine("Your leg is hurt but it won't slow you down.");
+            }
+            else if (injuredLeg == true) // If player is injured
+            {
+                Console.WriteLine("Your is sore but luckily the skeleton didn't pierce your skin.");
+            }
         }
     }
     else if (roomTwoChoice.ToUpper() == "DODGE") // Player chooses to dodge
@@ -389,18 +417,23 @@ if (swordShield == true) // If player purchased sword and shield
     }
     else // Player inputs something unknown
     {
-        Console.WriteLine("\nYou froze up and got struck by the skeleton!");
-        Console.WriteLine("\nPress Enter to continue.");
+        Console.WriteLine("\nYou froze up and got struck by the skeleton! You swing your 'Short Sword' in retaliation and take down the skeleton.\nYour leg is now " +
+            "badly injured.");
+        Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         if (healthPotion == true) // If player purchased health potion
         {
-            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
+            injuredLeg = false;
+            hurtLeg = true; // Player becomes hurt
+            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.\nYour leg is still hurt but it won't slow you down.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
-        else
+        else // Player doesn't have a health potion
         {
-            Console.WriteLine("You are bleeding from your fight with the skeleton but you choose to move forward.");
+            Console.WriteLine("If only you had a 'Health Potion' to heal your wounds.\nThe pain may be too much, but you continue anyway.");
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
         }
     }
 }
@@ -410,18 +443,22 @@ else if (swordShield == true && injuredLeg == true) // If player purchased sword
     string roomTwoChoice = Console.ReadLine()!;
     if (roomTwoChoice.ToUpper() == "FIGHT") // Player chooses to fight
     {
-        Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your arm as you deal a fatal blow.");
+        Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your leg as you deal a fatal blow.");
         Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         if (healthPotion == true) // If player purchased health potion
         {
-            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
+            injuredLeg = false;
+            hurtLeg = true;
+            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound. Your leg feels better.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
-        else
+        else // Player doesn't have a health potion
         {
-            Console.WriteLine("Your is sore but luckily the skeleton didn't pierce your skin.");
+            Console.WriteLine("If only you had a 'Health Potion' to heal your wounds.\nThe pain may be too much, but you continue anyway.");
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
         }
     }
     else if (roomTwoChoice.ToUpper() == "USE IRON SWORD") // Player chooses to use the sword
@@ -431,18 +468,23 @@ else if (swordShield == true && injuredLeg == true) // If player purchased sword
     }
     else // Player inputs something unknown
     {
-        Console.WriteLine("\nYou froze up and got struck by the skeleton!");
+        Console.WriteLine("\nYou froze up and got struck by the skeleton! You swing your 'Short Sword' in retaliation and take down the skeleton.\nYour leg is now " +
+            "badly injured.");
         Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         if (healthPotion == true) // If player purchased health potion
         {
-            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
+            injuredLeg = false;
+            hurtLeg = true; // Player becomes hurt
+            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.\nYour leg is still hurt but it won't slow you down.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
-        else
+        else // Player doesn't have a health potion
         {
-            Console.WriteLine("You are bleeding from your fight with the skeleton but you choose to move forward.");
+            Console.WriteLine("If only you had a 'Health Potion' to heal your wounds.\nThe pain may be too much, but you continue anyway.");
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
         }
     }
 }
@@ -452,18 +494,43 @@ else if (injuredLeg == true) // If player has an injured leg
     string roomTwoChoice = Console.ReadLine()!;
     if (roomTwoChoice.ToUpper() == "FIGHT") // Player chooses to fight
     {
-        Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your arm as you deal a fatal blow.");
+        Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your leg as you deal a fatal blow.");
         Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
         if (healthPotion == true) // If player purchased health potion
         {
-            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
+            injuredLeg = false;
+            hurtLeg = true;
+            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound. Your leg feels better.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
-        else
+        else // Player doesn't have a health potion
         {
-            Console.WriteLine("Your is sore but luckily the skeleton didn't pierce your skin.");
+            Console.WriteLine("If only you had a 'Health Potion' to heal your wounds.\nThe pain may be too much, but you continue anyway.");
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
+        }
+    }
+    else // Player inputs something unknown
+    {
+        Console.WriteLine("\nYou froze up and got struck by the skeleton! You swing your 'Short Sword' in retaliation and take down the skeleton.\nYour leg is now " +
+            "badly injured.");
+        Console.WriteLine("Press Enter to continue.");
+        Console.ReadLine();
+        if (healthPotion == true) // If player purchased health potion
+        {
+            injuredLeg = false;
+            hurtLeg = true; // Player becomes hurt
+            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.\nYour leg is still hurt but it won't slow you down.");
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
+        }
+        else // Player doesn't have a health potion
+        {
+            Console.WriteLine("If only you had a 'Health Potion' to heal your wounds.\nThe pain may be too much, but you continue anyway.");
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
         }
     }
 }
@@ -473,18 +540,46 @@ else // If player didn't purchase sword and shield
     string roomTwoChoice = Console.ReadLine()!;
     if (roomTwoChoice.ToUpper() == "FIGHT") // Player chooses to fight
     {
-        Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your arm as you deal a fatal blow.");
+        Console.WriteLine("\nYou choose to fight! You grab your 'Short Sword' and clash with the skeleton.\nThe skeleton strikes your leg as you deal a fatal blow.");
         Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
+        if (hurtLeg == true) // Checks if player is already hurt
+        {
+            hurtLeg = false;
+            injuredLeg = true; // If player is hurt, become injured
+        }
+        else // If player is not hurt
+        {
+            hurtLeg = true; // Player becomes hurt
+        }
         if (healthPotion == true) // If player purchased health potion
         {
-            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
-            Console.WriteLine("Press Enter to continue.");
-            Console.ReadLine();
+            if (hurtLeg == true) // If player is hurt, goes from hurt to healed
+            {
+                hurtLeg = false;
+                Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound. Your leg feels better.");
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+            }
+            else // If player is injured, goes from injured to hurt
+            {
+                injuredLeg = false;
+                hurtLeg = true;
+                Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.\nYour leg is still hurt but it won't slow you down.");
+                Console.WriteLine("Press Enter to continue.");
+                Console.ReadLine();
+            }
         }
-        else
+        else // Player doesn't have a health potion
         {
-            Console.WriteLine("Your is sore but luckily the skeleton didn't pierce your skin.");
+            if (hurtLeg == true) // If player is hurt
+            {
+                Console.WriteLine("Your leg is hurt but it won't slow you down.");
+            }
+            else if (injuredLeg == true) // If player is injured
+            {
+                Console.WriteLine("Your is sore but luckily the skeleton didn't pierce your skin.");
+            }
         }
     }
     else if (roomTwoChoice.ToUpper() == "DODGE") // Player chooses to dodge
@@ -496,18 +591,32 @@ else // If player didn't purchase sword and shield
     }
     else // Player inputs something unknown
     {
-        Console.WriteLine("\nYou froze up and got struck by the skeleton!");
+        Console.WriteLine("\nYou froze up and got struck by the skeleton! You swing your 'Short Sword' in retaliation and take down the skeleton.\nYour leg is now " +
+            "badly injured.");
         Console.WriteLine("Press Enter to continue.");
         Console.ReadLine();
+        if (hurtLeg == true) // Checks if player is already hurt
+        {
+            hurtLeg = false;
+            injuredLeg = true; // If player is hurt, become injured
+        }
+        else // If player is not hurt
+        {
+            injuredLeg = true; // Player becomes injured
+        }
         if (healthPotion == true) // If player purchased health potion
         {
-            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.");
+            injuredLeg = false;
+            hurtLeg = true; // Player becomes hurt
+            Console.WriteLine("You use the 'Health Potion' from the Merchant to heal your wound.\nYour leg is still hurt but it won't slow you down.");
             Console.WriteLine("Press Enter to continue.");
             Console.ReadLine();
         }
-        else
+        else // Player doesn't have a health potion
         {
-            Console.WriteLine("You are bleeding from your fight with the skeleton but you choose to move forward.");
+            Console.WriteLine("If only you had a 'Health Potion' to heal your wounds.\nThe pain may be too much, but you continue anyway.");
+            Console.WriteLine("Press Enter to continue.");
+            Console.ReadLine();
         }
     }
 }
@@ -523,10 +632,14 @@ if (strangeKey == true) // Player purchased the key
     Console.WriteLine("Press Enter to continue.");
     Console.ReadLine();
     Console.WriteLine("You obtained 'Mysterious Sword'");
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
 }
 else // Player didn't purchase the key
 {
     Console.WriteLine("You wonder what's behind the secret door and how you could open it.\nYou turn and head to the last room of the dungeon.");
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
 }
 
 // Final room
