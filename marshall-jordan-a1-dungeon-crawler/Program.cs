@@ -664,15 +664,38 @@ else // Player doesn't have the sword from the secret room
 }
 Console.WriteLine("\nYou try and think fast! What do you do?");
 
+// Boss fight start
 if (moonlightSword == true) // Player isn't injured and has Moonlight Sword
 {
     Console.WriteLine(">FIGHT     >DODGE     >USE MOONLIGHT SWORD");
     string bossFightOption1 = Console.ReadLine()!;
+
+    if (bossFightOption1.ToUpper() == "FIGHT")
+    {
+        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+    }
+    else if (bossFightOption1.ToUpper() == "DODGE")
+    {
+        Console.WriteLine("You roll out of the way of the attack just in time.\nYou quickly jump up to your feet.");
+    }
+    else if (bossFightOption1.ToUpper() == "USE MOONLIGHT SWORD")
+    {
+        Console.WriteLine("You draw the 'Moonlight Sword' and clash blades with the Fallen Knight.");
+    }
+    else
+    {
+        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.");
+    }
 }
 else if (swordShield == true) // Player isn't injured and has Wooden Shield
 {
     Console.WriteLine(">FIGHT     >DODGE     >USE SHIELD");
     string bossFightOption1 = Console.ReadLine()!;
+
+    if (bossFightOption1.ToUpper() == "FIGHT")
+    {
+        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+    }
 }
 else if (injuredLeg == true && moonlightSword == true) // Player is injured and Moonlight Sword
 {
@@ -682,6 +705,11 @@ else if (injuredLeg == true && moonlightSword == true) // Player is injured and 
 else if (injuredLeg == true && swordShield == true) // Player is injured and has Wooden Shield
 {
     Console.WriteLine(">FIGHT     >USE SHIELD");
+    string bossFightOption1 = Console.ReadLine()!;
+}
+else if (injuredLeg == false) // Player isn't injured and has no items
+{
+    Console.WriteLine(">FIGHT     >DODGE");
     string bossFightOption1 = Console.ReadLine()!;
 }
 else if (injuredLeg == true) // Player is injured and doesn't have any items
