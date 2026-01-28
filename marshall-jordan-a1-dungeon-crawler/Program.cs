@@ -1,5 +1,6 @@
 ﻿// RPG Scenario Interactive Terminal Assignment #1
 using System;
+using System.Collections.Specialized;
 using System.Runtime.Intrinsics.X86;
 
 // Used to check inventory and injuries
@@ -645,7 +646,7 @@ else // Player didn't purchase the key
 }
 
 // Final room
-Console.WriteLine("You walk into the final room of the dungeon.");
+Console.WriteLine("You walk into the final room of the dungeon. Armour and weapons are scattered throughout the room from defeated adventurers.");
 Console.WriteLine("A suit of armour sits in a chair at the far side of the room. The air thickens as you walk further into the room.\nSuddenly, the suit of armour " +
     "begins to move and fill with life. You can see two glowing orbs behind the helmet.");
 Console.WriteLine("Press Enter to continue.");
@@ -785,9 +786,40 @@ else if (injuredLeg == true) // Player is injured and doesn't have any items
 // Boss fight start: phase 2
 if (usedMoonlightSword == true) // Player chose to use the moonlight sword
 {
-    Console.WriteLine("");
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
+    Console.WriteLine("The 'Moonlight Sword' begins to glow.\nThe Fallen Knight jumps back.");
+    Console.WriteLine("\"How is this possible? How can you wield that blade?\"");
+    Console.WriteLine("\nYou see an opening to attack, now is your chance!");
+    Console.WriteLine("What do you do?");
+    Console.WriteLine(">ATTACK     >FOCUS ENERGY");
+    string bossFightOption2 = Console.ReadLine()!;
+    if (bossFightOption2.ToUpper() == "ATTACK") // Player chooses to attack
+    {
+        Console.WriteLine();
+    }
+    else if (bossFightOption2.ToUpper() == "FOCUS ENERGY") // Player chooses to focus energy in the sword
+    {
+        Console.WriteLine();
+    }
+
 }
 else // Player didn't use the moonlight sword
 {
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
     Console.WriteLine("");
+    Console.WriteLine("What do you do?");
+
+    if (swordShield == true) // Player has the iron sword
+    {
+        Console.WriteLine(">FIGHT     >USE IRON SWORD");
+        string bossFightOption2 = Console.ReadLine()!;
+
+    }
+    else // Player doesn't have the iron sword
+    {
+        Console.WriteLine(">FIGHT");
+        string bossFightOption2 = Console.ReadLine()!;
+    }
 }
