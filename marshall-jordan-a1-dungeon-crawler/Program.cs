@@ -1,6 +1,7 @@
 ﻿// RPG Scenario Interactive Terminal Assignment #1
 using System;
 using System.Collections.Specialized;
+using System.Runtime.InteropServices;
 using System.Runtime.Intrinsics.X86;
 
 // Used to check inventory and injuries
@@ -11,6 +12,7 @@ bool hurtLeg = false;
 bool injuredLeg = false;
 bool moonlightSword = false;
 bool usedMoonlightSword = false;
+bool poweredUpSword = false;
 
 // Background story
 Console.WriteLine("You're a novice adventurer who overheard a group of people talking about adventurers\nwho" +
@@ -20,8 +22,8 @@ Console.WriteLine("Press Enter to continue.");
 Console.ReadLine();
 
 // Merchant interaction
-Console.WriteLine("You've nearly reached the dungeon but you see a merchant on the side of the road.");
-Console.WriteLine("Do you speak to the merchant?");
+Console.WriteLine("You've nearly reached the dungeon but you see a Hooded Merchant on the side of the road.");
+Console.WriteLine("Do you speak to the Hooded Merchant?");
 Console.WriteLine(">YES     >NO");
 string doTalk = Console.ReadLine()!; // Get answer
 
@@ -198,7 +200,7 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
 }
 else // Player doesn't talk to the merchant
 {
-    Console.WriteLine("\nYou decide not to speak to the merchant and continue on your way to the dungeon.");
+    Console.WriteLine("\nYou decide not to speak to the Hooded Merchant and continue on your way to the dungeon.");
 }
 
 // Reached the dungeon
@@ -646,7 +648,8 @@ else // Player didn't purchase the key
 }
 
 // Final room
-Console.WriteLine("You walk into the final room of the dungeon. Armour and weapons are scattered throughout the room from defeated adventurers.");
+Console.WriteLine("You walk into the final room of the dungeon. Armour and weapons are scattered throughout the room from defeated adventurers.\nLight from outside " +
+    "is coming through cracks and holes in the ceiling.");
 Console.WriteLine("A suit of armour sits in a chair at the far side of the room. The air thickens as you walk further into the room.\nSuddenly, the suit of armour " +
     "begins to move and fill with life. You can see two glowing orbs behind the helmet.");
 Console.WriteLine("Press Enter to continue.");
@@ -675,20 +678,20 @@ if (moonlightSword == true) // Player isn't injured and has Moonlight Sword
 
     if (bossFightOption1.ToUpper() == "FIGHT") // Player chooses fight
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
     else if (bossFightOption1.ToUpper() == "DODGE") // Player chooses dodge
     {
-        Console.WriteLine("You roll out of the way of the attack just in time.\nYou quickly jump up to your feet.");
+        Console.WriteLine("\nYou roll out of the way of the attack just in time.\nYou quickly jump up to your feet.");
     }
     else if (bossFightOption1.ToUpper() == "USE MOONLIGHT SWORD") // Player chooses moonlight sword
     {
         usedMoonlightSword = true;
-        Console.WriteLine("You draw the 'Moonlight Sword' and clash blades with the Fallen Knight.");
+        Console.WriteLine("\nYou draw the 'Moonlight Sword' and clash blades with the Fallen Knight.");
     }
     else // Player inputs something unknown
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
 }
 else if (swordShield == true) // Player isn't injured and has Wooden Shield
@@ -698,19 +701,19 @@ else if (swordShield == true) // Player isn't injured and has Wooden Shield
 
     if (bossFightOption1.ToUpper() == "FIGHT") // Player chooses fight
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
     else if (bossFightOption1.ToUpper() == "DODGE") // Player chooses dodge
     {
-        Console.WriteLine("You roll out of the way of the attack just in time.\nYou quickly jump up to your feet.");
+        Console.WriteLine("\nYou roll out of the way of the attack just in time.\nYou quickly jump up to your feet.");
     }
     else if (bossFightOption1.ToUpper() == "USE SHIELD") // Player chooses wooden shield
     {
-        Console.WriteLine("You use your 'Wooden Shield' to try and block the incoming attack.\nThe Fallen Knight slices right through your shield.");
+        Console.WriteLine("\nYou use your 'Wooden Shield' to try and block the incoming attack.\nThe Fallen Knight slices right through your shield.");
     }
     else // Player inputs something unknown
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
 }
 else if (injuredLeg == true && moonlightSword == true) // Player is injured and Moonlight Sword
@@ -720,16 +723,16 @@ else if (injuredLeg == true && moonlightSword == true) // Player is injured and 
 
     if (bossFightOption1.ToUpper() == "FIGHT") // Player chooses fight
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
     else if (bossFightOption1.ToUpper() == "USE MOONLIGHT SWORD") // Player chooses moonlight sword
     {
         usedMoonlightSword = true;
-        Console.WriteLine("You draw the 'Moonlight Sword' and clash blades with the Fallen Knight.");
+        Console.WriteLine("\nYou draw the 'Moonlight Sword' and clash blades with the Fallen Knight.");
     }
     else // Player inputs something unknown
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
 }
 else if (injuredLeg == true && swordShield == true) // Player is injured and has Wooden Shield
@@ -739,15 +742,15 @@ else if (injuredLeg == true && swordShield == true) // Player is injured and has
 
     if (bossFightOption1.ToUpper() == "FIGHT") // Player chooses fight
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
     else if (bossFightOption1.ToUpper() == "USE SHIELD") // Player chooses wooden shield
     {
-        Console.WriteLine("You use your 'Wooden Shield' to try and block the incoming attack.\nThe Fallen Knight slices right through your shield.");
+        Console.WriteLine("\nYou use your 'Wooden Shield' to try and block the incoming attack.\nThe Fallen Knight slices right through your shield.");
     }
     else // Player inputs something unknown
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
 }
 else if (injuredLeg == false) // Player isn't injured and has no items
@@ -757,15 +760,15 @@ else if (injuredLeg == false) // Player isn't injured and has no items
 
     if (bossFightOption1.ToUpper() == "FIGHT") // Player chooses fight
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
     else if (bossFightOption1.ToUpper() == "DODGE") // Player chooses dodge
     {
-        Console.WriteLine("You roll out of the way of the attack just in time.\nYou quickly jump up to your feet.");
+        Console.WriteLine("\nYou roll out of the way of the attack just in time.\nYou quickly jump up to your feet.");
     }
     else // Player inputs something unknown
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
 }
 else if (injuredLeg == true) // Player is injured and doesn't have any items
@@ -775,11 +778,11 @@ else if (injuredLeg == true) // Player is injured and doesn't have any items
 
     if (bossFightOption1.ToUpper() == "FIGHT") // Player chooses fight
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
     else // Player inputs something unknown
     {
-        Console.WriteLine("You quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
+        Console.WriteLine("\nYou quickly draw your 'Short Sword' but the knight knocks it out of your hand with his blade.\nYou jump back and regain your balance.");
     }
 }
 
@@ -794,21 +797,31 @@ if (usedMoonlightSword == true) // Player chose to use the moonlight sword
     Console.WriteLine("What do you do?");
     Console.WriteLine(">ATTACK     >FOCUS ENERGY");
     string bossFightOption2 = Console.ReadLine()!;
+
     if (bossFightOption2.ToUpper() == "ATTACK") // Player chooses to attack
     {
-        Console.WriteLine();
+        Console.WriteLine("\nYou quickly swing the 'Moonlight Sword', tearing through part of the Fallen Knight's armour, causing him to grunt in agony.");
+        Console.WriteLine("\"Ugh... This can't be!\"");
     }
     else if (bossFightOption2.ToUpper() == "FOCUS ENERGY") // Player chooses to focus energy in the sword
     {
-        Console.WriteLine();
+        usedMoonlightSword = false;
+        poweredUpSword = true;
+        Console.WriteLine("\nYou being to focus all of your energy into the glowing sword. The Fallen Knight braces himself.");
     }
-
+    else // Player inputs something unknown
+    {
+        Console.WriteLine("You quickly swing the 'Moonlight Sword', tearing through part of the Fallen Knight's armour, causing him to grunt in agony.");
+        Console.WriteLine("\"Ugh... This can't be!\"");
+    }
 }
 else // Player didn't use the moonlight sword
 {
     Console.WriteLine("Press Enter to continue.");
     Console.ReadLine();
-    Console.WriteLine("");
+    Console.WriteLine("The Fallen Knight stands menacingly with his sword by his side.");
+    Console.WriteLine("\"Give up now, you don't stand a chance.\"");
+    Console.WriteLine("\nYou see an opening to attack while the knight is taunting you.");
     Console.WriteLine("What do you do?");
 
     if (swordShield == true) // Player has the iron sword
@@ -816,10 +829,87 @@ else // Player didn't use the moonlight sword
         Console.WriteLine(">FIGHT     >USE IRON SWORD");
         string bossFightOption2 = Console.ReadLine()!;
 
+        if (bossFightOption2.ToUpper() == "FIGHT")
+        {
+            Console.WriteLine("\nYou quickly grab a spear from the ground and charge at the knight.\nYou connect with his armour and manage to crack his armour.");
+        }
+        else if (bossFightOption2.ToUpper() == "USE IRON SWORD")
+        {
+            Console.WriteLine("\nYou swing your 'Iron Sword' with all your might, destroying part of the knight's armour and breaking your sword in the process.");
+        }
     }
     else // Player doesn't have the iron sword
     {
         Console.WriteLine(">FIGHT");
         string bossFightOption2 = Console.ReadLine()!;
+
+        if (bossFightOption2.ToUpper() == "FIGHT") // Player chooses to fight
+        {
+            Console.WriteLine("\nYou quickly grab a spear from the ground and charge at the knight.\nYou connect with his armour and manage to crack his armour.");
+        }
+        else // Player inputs something unknown
+        {
+            Console.WriteLine("\nYou quickly grab a spear from the ground and charge at the knight.\nYou connect with his armour and manage to crack his armour.");
+        }
     }
+}
+
+// Boss fight start: phase 3 (final)
+if (poweredUpSword == true) // Player focused energy into the moonlight sword
+{
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
+    Console.WriteLine("The 'Moonlight Sword' is full of energy! Time to deal the finishing blow!");
+    Console.WriteLine(">FINISH HIM");
+    Console.ReadLine();
+    Console.WriteLine("\nYou harness the power of the 'Moonlight Sword', summoning a beam of light as you slash through the Fallen Knight.\nA blue light eminates from " +
+        "the Fallen Knight. You suddenly hear a noise behind you.");
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
+    Console.WriteLine("The Hooded Merchant appears in the doorway and walks up to the Fallen Knight. They take off their hood, revealing a beautiful woman.");
+    Console.WriteLine("The Fallen Knight's armour collapses to the ground, leaving a ghostly figure of a man. He reaches out to the woman.");
+    Console.WriteLine("\"Of course, it all makes sense now, my beloved Moon Princess, you're the reason they have my 'Moonlight Sword'.\"");
+    Console.WriteLine("The Moon Princess reaches up to touch the Fallen Knight's face.");
+    Console.WriteLine("\"You can rest now, you no longer need to guard this place.\" The Moon Princess turns to you.");
+    Console.WriteLine("\"I knew I was right about you. Thank you for freeing him.\" She turns back to the Fallen Knight.");
+    Console.WriteLine("\"Now let's leave this place together.\"");
+    Console.WriteLine("The Fallen Knight looks over the Moon Princess and nods at you. He looks back at the princess and embraces her in his arms.\nThey both fade away " +
+        "into a blue light.\n'Moonlight Sword' in hand, you feel confident in your abilities and look forward to what new adventures await you.");
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
+    Console.WriteLine($"Thank you for playing! I hope you enjoyed this short adventure! :)");
+}
+else if (usedMoonlightSword == true) // Player chose to attack with the moonlight sword
+{
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
+    Console.WriteLine("The Fallen Knight is injured! Time to deal the finishing blow!");
+    Console.WriteLine(">FINISH HIM");
+    Console.ReadLine();
+    Console.WriteLine("\nYou drive the 'Moonlight Sword' through the chest of the Fallen Knight, who collapses against the wall. The light from above reflects off of the " +
+        "armour and blade.\nYour work is done here, no more adventurers will fall victim to this tomb. You turn to leave the tomb. As you exit the room, you take one last " +
+        "look at the Fallen Knight.\nYou see a hooded figure kneeling beside the knight. You think it must be the Hooded Merchant from earlier but where did they come from?" +
+        "\nThey must be looting the knight for goods to sell. You pay it all no mind, wanting to move on to your next adventure.");
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
+    Console.WriteLine($"Thank you for playing! I hope you enjoyed this short adventure! :)");
+}
+else // Player did not use the moonlight sword
+{
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
+    Console.WriteLine("The Fallen Knight's armour is weakened! Time to deal the finishing blow!");
+    Console.WriteLine(">FINISH HIM");
+    Console.ReadLine();
+    Console.WriteLine("\nYou pick up a sword from a fallen adventurer and deal the killing blow to the Fallen Knight.\nThe Fallen Knight falls to the ground. " +
+        "With the last bit of his strength he reaches up towards the sky.");
+    Console.WriteLine("\"I will be with you soon... My love...\"");
+    Console.WriteLine("The Fallen Knight's arm falls to his side.");
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
+    Console.WriteLine("You have defeated the Fallen Knight, protector of The Tomb of the Fallen Knight.\nThis tomb will not take any more lives.\nYou hope that " +
+        "the Fallen Knight has found some peace...");
+    Console.WriteLine("Press Enter to continue.");
+    Console.ReadLine();
+    Console.WriteLine($"Thank you for playing! I hope you enjoyed this short adventure! :)");
 }
