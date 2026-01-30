@@ -807,7 +807,7 @@ if (usedMoonlightSword == true) // Player chose to use the moonlight sword
     {
         usedMoonlightSword = false;
         poweredUpSword = true;
-        Console.WriteLine("\nYou being to focus all of your energy into the glowing sword. The Fallen Knight braces himself.");
+        Console.WriteLine("\nYou begin to focus all of your energy into the glowing sword. The Fallen Knight braces himself.");
     }
     else // Player inputs something unknown
     {
