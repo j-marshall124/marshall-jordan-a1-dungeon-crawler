@@ -15,8 +15,8 @@ bool usedMoonlightSword = false;
 bool poweredUpSword = false;
 
 // Background story
-Console.WriteLine("You're a novice adventurer who overheard a group of people talking about adventurers\nwho" +
-    " had gone missing in a mysterious dungeon that the locals call 'The Tomb of the Fallen Knight'. \nThis" +
+Console.WriteLine("You're a novice adventurer who overhears a group of townspeople talking about adventurers\nwho" +
+    " had gone missing in a mysterious dungeon called 'The Tomb of the Fallen Knight'. \nThis" +
     " information intrigues you, so you grab your 'Short Sword' and bag and head towards the dungeon.");
 Console.WriteLine("Press Enter to continue.");
 Console.ReadLine();
@@ -29,9 +29,9 @@ string doTalk = Console.ReadLine()!; // Get answer
 
 if (doTalk.ToUpper() == "YES") // Talk to the merchant
 {
-    Console.WriteLine("\n\"Hello there adventurer! What might your name be?\"");
+    Console.WriteLine("\n\"Hello there, adventurer! What might your name be?\"");
     string playerName = Console.ReadLine()!;
-    Console.WriteLine($"\n\"Nice to meet you {playerName}, how much gold might you have in your bag?\"");
+    Console.WriteLine($"\n\"Nice to meet you, {playerName}. How much gold might you have in your bag?\"");
     string heldGoldText = Console.ReadLine()!;
     long heldGold = long.Parse(heldGoldText); // Turn gold text input into long integer
 
@@ -105,18 +105,18 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
                         heldGold -= 124; // Subtract 124 gold from inventory
                         strangeKey = true; // Key is in inventory
                         Console.WriteLine("\n\"Here you go. Hopefully you can find a use for it.");
-                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
+                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey, {playerName}.\"");
                     }
                     else // If player doesn't have 124 gold
                     {
                         Console.WriteLine("\n\"You don't have enough gold for that.");
-                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
+                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey, {playerName}.\"");
                     }
                 }
                 else // Player doesn't want to buy the strange key
                 {
                     Console.WriteLine("\n\"I guess I'll hold onto it for now.");
-                    Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
+                    Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey, {playerName}.\"");
                 }
             }
             else // Player doesn't want to ask about the strange key
@@ -126,7 +126,7 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
         }
         else // Player doesn't purchase anything else
         {
-            Console.WriteLine($"\n\"Good luck on your journey {playerName}.\"");
+            Console.WriteLine($"\n\"Good luck on your journey, {playerName}.\"");
         }
     }
 
@@ -169,18 +169,18 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
                         heldGold -= 124; // Subtract 124 gold from inventory
                         strangeKey = true; // Key is in inventory
                         Console.WriteLine("\n\"Here you go. Hopefully you can find a use for it.");
-                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
+                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey, {playerName}.\"");
                     }
                     else // If player doesn't have 124 gold
                     {
                         Console.WriteLine("\n\"You don't have enough gold for that.");
-                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
+                        Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey, {playerName}.\"");
                     }
                 }
                 else // Player doesn't want to buy the strange key
                 {
                     Console.WriteLine("\n\"I guess I'll hold onto it for now.");
-                    Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey {playerName}.\"");
+                    Console.WriteLine($"I have nothing else left to offer you. Good luck on your journey, {playerName}.\"");
                 }
             }
             else // Player doesn't want to ask about the strange key
@@ -190,12 +190,12 @@ if (doTalk.ToUpper() == "YES") // Talk to the merchant
         }
         else // Player doesn't purchase anything else
         {
-            Console.WriteLine($"\n\"Good luck on your journey {playerName}.\"");
+            Console.WriteLine($"\n\"Good luck on your journey, {playerName}.\"");
         }
     }
     else // Player doesn't buy anything
     {
-        Console.WriteLine($"\n\"Good luck on your journey {playerName}.\"");
+        Console.WriteLine($"\n\"Good luck on your journey, {playerName}.\"");
     }
 }
 else // Player doesn't talk to the merchant
@@ -353,7 +353,7 @@ else // Didn't purchase sword and shield
 // Second room in dungeon
 Console.WriteLine("Press Enter to continue.");
 Console.ReadLine();
-Console.WriteLine("As you enter the next room, a chill crawls down your spine.\nBefore your eyes a pile of bones springs to life, ready to fight.");
+Console.WriteLine("As you enter the next room, a chill crawls down your spine.\nBefore your eyes, a pile of bones springs to life, ready to fight.");
 Console.WriteLine("The skeleton rushes towards you with sword in hand.");
 Console.WriteLine("What do you do?");
 
@@ -660,7 +660,7 @@ Console.WriteLine("Press Enter to continue.");
 Console.ReadLine();
 if (moonlightSword == true) // If player has the sword from the secret room
 {
-    Console.WriteLine("The Fallen Knight notices the 'Mysterious Sword' on your back and draws his sword.\nSounding surprised, the knight speaks again.");
+    Console.WriteLine("The Fallen Knight notices the 'Mysterious Sword' on your back and draws his sword.\nStartled, the knight speaks again.");
     Console.WriteLine("\"The 'Moonlight Sword'? How is this possible?\"");
     Console.WriteLine("The Fallen Knight tightens his grip on his sword and lunges towards you!");
 }
@@ -807,7 +807,7 @@ if (usedMoonlightSword == true) // Player chose to use the moonlight sword
     {
         usedMoonlightSword = false;
         poweredUpSword = true;
-        Console.WriteLine("\nYou begin to focus all of your energy into the glowing sword. The Fallen Knight braces himself.");
+        Console.WriteLine("\nYou begin focusing all of your energy into the glowing sword. The Fallen Knight braces himself.");
     }
     else // Player inputs something unknown
     {
@@ -868,7 +868,7 @@ if (poweredUpSword == true) // Player focused energy into the moonlight sword
     Console.ReadLine();
     Console.WriteLine("The Hooded Merchant appears in the doorway and walks up to the Fallen Knight. They take off their hood, revealing a beautiful woman.");
     Console.WriteLine("The Fallen Knight's armour collapses to the ground, leaving a ghostly figure of a man. He reaches out to the woman.");
-    Console.WriteLine("\"Of course, it all makes sense now, my beloved Moon Princess, you're the reason they have my 'Moonlight Sword'.\"");
+    Console.WriteLine("\"Of course, it all makes sense now, my beloved Moon Princess. You're the reason they have my 'Moonlight Sword'.\"");
     Console.WriteLine("The Moon Princess reaches up to touch the Fallen Knight's face.");
     Console.WriteLine("\"You can rest now, you no longer need to guard this place.\" The Moon Princess turns to you.");
     Console.WriteLine("\"I knew I was right about you. Thank you for freeing him.\" She turns back to the Fallen Knight.");
@@ -888,7 +888,7 @@ else if (usedMoonlightSword == true) // Player chose to attack with the moonligh
     Console.ReadLine();
     Console.WriteLine("\nYou drive the 'Moonlight Sword' through the chest of the Fallen Knight, who collapses against the wall. The light from above reflects off of the " +
         "armour and blade.\nYour work is done here, no more adventurers will fall victim to this tomb. You turn to leave the tomb. As you exit the room, you take one last " +
-        "look at the Fallen Knight.\nYou see a hooded figure kneeling beside the knight. You think it must be the Hooded Merchant from earlier but where did they come from?" +
+        "look at the Fallen Knight.\nYou see a hooded figure kneeling beside the knight. You think it must be the Hooded Merchant from earlier, but where did they come from?" +
         "\nThey must be looting the knight for goods to sell. You pay it all no mind, wanting to move on to your next adventure.");
     Console.WriteLine("Press Enter to continue.");
     Console.ReadLine();
